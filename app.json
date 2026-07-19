@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "DayPorter",
+    "slug": "dayporter",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "dayporter",
+    "owner": "boyscout1970",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dayporter.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.dayporter.app",
+      "predictiveBackGestureEnabled": false
+    }
+  }
+}
