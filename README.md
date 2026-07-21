@@ -36,8 +36,9 @@ RevenueCat one-time unlock (`dayporter_pro_lifetime`): unlimited clients after
 
 ## Pre-ship TODOs
 
-- [ ] App icon + splash (assets/ is empty; app.json has no icon refs yet) —
-      dark-mode-aware splash now that userInterfaceStyle is "automatic"
+- [x] App icon (First Light — sunrise over a clean floor) + navy launch screen
+      via expo-splash-screen. Assets in assets/; regenerate with the scratchpad
+      sharp workflow if the motif changes.
 - [ ] Create EAS project (`eas init`, owner boyscout1970) and paste projectId into app.json
 - [ ] Create RevenueCat project; paste real keys into src/revenuecat.ts and
       CONFIRM the entitlement id on the RC dashboard (`pro` vs `Pro` trap)
