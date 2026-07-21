@@ -22,6 +22,21 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#20486f"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#20486f",
+          "dark": {
+            "image": "./assets/splash-icon.png",
+            "backgroundColor": "#20486f"
+          }
+        }
+      ]
+    ]
   }
 }
