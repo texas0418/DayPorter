@@ -4,6 +4,7 @@
     "slug": "dayporter",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "scheme": "dayporter",
     "owner": "boyscout1970",
     "userInterfaceStyle": "automatic",
@@ -16,7 +17,11 @@
     },
     "android": {
       "package": "com.dayporter.app",
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#20486f"
+      }
     }
   }
 }
