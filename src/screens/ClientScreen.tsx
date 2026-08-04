@@ -568,7 +568,7 @@ export default function ClientScreen({ clientId, onBack, onNewBid }: Props) {
 const makeStyles = (c: Palette) =>
   StyleSheet.create({
     root: { flex: 1, backgroundColor: c.bg },
-    scroll: { padding: 16, paddingTop: 0, paddingBottom: 48 },
+    scroll: { padding: 16, paddingTop: 0, paddingBottom: 48, width: '100%', maxWidth: 640, alignSelf: 'center' },
     topBar: {
       flexDirection: 'row',
       alignItems: 'center',
