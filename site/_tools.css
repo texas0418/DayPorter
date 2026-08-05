@@ -47,7 +47,6 @@ h3{font-size:1rem;font-weight:650}
 
 /* calculator shell */
 .calc-shell{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
-@media(max-width:860px){.calc-shell{grid-template-columns:1fr}}
 .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px}
 .field{padding:16px 0;border-bottom:1px solid var(--hairline)}
 .field:first-child{padding-top:0}
@@ -122,3 +121,29 @@ input[type=number]:focus{outline:2px solid var(--accent);outline-offset:-1px}
 footer{padding:36px 0 52px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 footer a{color:var(--body)}
+
+/* --- narrow screens -------------------------------------------------------
+   Contractors use these on a phone, in a truck. Two things have to hold:
+   the answer stays on screen while you edit the inputs, and no label or
+   number ever gets squeezed into a two-word-per-line column. */
+@media(max-width:860px){
+  .calc-shell{grid-template-columns:1fr}
+  /* result above the inputs and pinned under the nav, so changing a number
+     always shows the number changing */
+  .out{order:-1;position:static}
+  .result{position:sticky;top:72px;z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.16)}
+}
+@media(max-width:560px){
+  .wrap{padding:0 18px}
+  header.hero{padding:36px 0 28px}
+  section.bd{padding:40px 0}
+  .panel{padding:20px}
+  /* stack label over a full-width input — 128px next to a wrapping label is
+     what produced "Cleanable square / feet" */
+  .field-row{grid-template-columns:1fr;gap:10px}
+  .field-row input[type=number]{font-size:1.05rem;padding:12px 14px}
+  .result{padding:20px}
+  .result .big{font-size:2.1rem}
+  .brk td{font-size:.88rem}
+  .tools{grid-template-columns:1fr}
+}
