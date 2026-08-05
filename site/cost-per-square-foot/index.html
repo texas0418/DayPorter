@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercial Cleaning Cost Per Square Foot | Free Calculator &amp; Benchmarks</title>
+<meta name="description" content="What should commercial cleaning cost per square foot? Enter your square footage and price to get cost per sq ft per month and per year, then compare it against what the labor math actually supports for your facility type.">
+<link rel="canonical" href="https://simonbuilds.app/dayporter/cost-per-square-foot/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Simon Builds">
+<meta property="og:title" content="Commercial Cleaning Cost Per Square Foot | Free Calculator &amp; Benchmarks">
+<meta property="og:description" content="Cost per square foot, worked out from your own numbers — and checked against what production rates and labor cost actually support.">
+<meta property="og:url" content="https://simonbuilds.app/dayporter/cost-per-square-foot/">
+<meta property="og:image" content="https://simonbuilds.app/assets/icons/dayporter.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/dayporter/_tools.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Cleaning Cost Per Square Foot Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","url":"https://simonbuilds.app/dayporter/cost-per-square-foot/","description":"Calculates commercial cleaning cost per square foot per month and per year from square footage and contract price, and compares it against the price implied by production rates and loaded labor cost for six facility types.","author":{"@type":"Person","name":"Simon Shih","url":"https://simonbuilds.app/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much does commercial cleaning cost per square foot?","acceptedAnswer":{"@type":"Answer","text":"There is no single figure, because cost per square foot is an output of labor, not an input. It falls out of how fast the space can be cleaned, how often it is serviced, and what labor costs in that market. Nightly office work at typical production rates and a $20 loaded labor rate lands near $0.22 per square foot per month, while warehouse space can fall below $0.09 and medical or restaurant work can exceed $0.33."}},
+{"@type":"Question","name":"Why is a cost per square foot benchmark misleading?","acceptedAnswer":{"@type":"Answer","text":"Because it hides frequency. The same building cleaned five nights a week costs roughly five times as much per square foot as the same building cleaned once a week, and a published benchmark rarely says which it assumes. Always compare like frequency for like frequency."}},
+{"@type":"Question","name":"Is a lower cost per square foot better?","acceptedAnswer":{"@type":"Answer","text":"For a buyer, only if the scope is genuinely the same. A materially lower price per square foot usually means fewer labor hours in the building — a lighter scope, less frequent service, or a contractor who has underpriced the work and will either cut corners or fail to keep the account staffed."}}]}
+</script>
+</head>
+<body>
+<nav><div class="wrap"><a class="logo" href="/">simon<em>builds</em>.app</a><div class="navlinks"><a href="/dayporter/bid-calculator/">Bid Calculator</a><a href="/dayporter/">DayPorter</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="eyebrow">Free tool</div>
+<h1>Cleaning cost per square foot</h1>
+<p class="lead">Work out what a contract really costs per square foot — then check
+it against what production rates and labor cost actually support. Because cost per
+square foot is not a price you look up. It is a number that falls out of the labor,
+and any benchmark that ignores frequency is telling you nothing.</p>
+</div></header>
+
+<section><div class="wrap">
+<div class="calc-shell">
+
+  <div class="panel">
+    <div class="field"><div class="field-row">
+      <label for="sqft">Cleanable square feet
+        <span class="hint">Floor area actually serviced — not gross building size.</span>
+      </label>
+      <input type="number" id="sqft" value="12000" min="0" step="500" inputmode="numeric">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="price">Monthly price <span class="unit">($)</span>
+        <span class="hint">What you charge, or what you have been quoted. Leave at 0 to just see the benchmark.</span>
+      </label>
+      <input type="number" id="price" value="2625" min="0" step="25" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="visits">Visits per week
+        <span class="hint">This is the input benchmarks usually hide. Nightly is 5.</span>
+      </label>
+      <input type="number" id="visits" value="5" min="0" max="21" step="1" inputmode="numeric">
+    </div></div>
+
+    <div class="field">
+      <div class="field-row">
+        <label for="prod">Facility type <span class="unit">(sq ft / labor hour)</span>
+          <span class="hint">Sets the production rate used for the comparison. Pick the closest, or type your own rate.</span>
+        </label>
+        <input type="number" id="prod" value="3000" min="1" step="100" inputmode="numeric">
+      </div>
+      <div class="presets" id="presets">
+        <button type="button" data-rate="3000">General office</button>
+        <button type="button" data-rate="4500">Retail</button>
+        <button type="button" data-rate="3500">School</button>
+        <button type="button" data-rate="2000">Medical / clinic</button>
+        <button type="button" data-rate="8000">Warehouse</button>
+        <button type="button" data-rate="1800">Restaurant</button>
+      </div>
+    </div>
+
+    <div class="field"><div class="field-row">
+      <label for="labor">Loaded labor rate <span class="unit">($/hr)</span>
+        <span class="hint">Wage plus burden. Work yours out with the <a href="/dayporter/loaded-labor-rate/">loaded labor rate calculator</a>.</span>
+      </label>
+      <input type="number" id="labor" value="20" min="0" step="0.50" inputmode="decimal">
+    </div></div>
+  </div>
+
+  <div class="out">
+    <div class="result" id="result" aria-live="polite">
+      <div class="big" id="psf">$0.000<small> / sq ft / month</small></div>
+      <div class="sub2" id="verdict">&mdash;</div>
+    </div>
+
+    <table class="brk"><tbody>
+      <tr><td>Per sq ft, per month</td><td id="r-mo">&mdash;</td></tr>
+      <tr><td>Per sq ft, per year</td><td id="r-yr">&mdash;</td></tr>
+      <tr><td>Per visit</td><td id="r-visit">&mdash;</td></tr>
+      <tr><td>Visits per month</td><td id="r-mv">&mdash;</td></tr>
+      <tr class="tot"><td>What the labor math implies</td><td id="r-bench">&mdash;</td></tr>
+    </tbody></table>
+
+    <button class="copy" id="copy" type="button">Copy the numbers</button>
+    <p class="cap">The benchmark assumes your production rate and labor rate, at
+    6% supplies and a 30% margin. Change those inputs and it moves with you.</p>
+  </div>
+
+</div>
+</div></section>
+
+<section class="bd"><div class="wrap">
+<h2>What the math implies, by facility type</h2>
+<p class="sub">Live, from <em>your</em> labor rate and <em>your</em> frequency — not a
+number scraped off someone else's blog. Monthly price per square foot at
+<span id="assume-note"></span>.</p>
+<div class="scrollx">
+<table class="reftab">
+<thead><tr><th>Facility type</th><th style="text-align:right">Production rate</th><th style="text-align:right">$ / sq ft / month</th><th style="text-align:right">$ / sq ft / year</th></tr></thead>
+<tbody id="benchbody"></tbody>
+</table>
+</div>
+<p class="cap">These are what the bid math produces, not survey data. They move with
+labor rates, frequency and how fast a building can genuinely be cleaned — which is
+exactly why a fixed published benchmark is worth so little.</p>
+</div></section>
+
+<section class="bd"><div class="wrap prose">
+<h2>Why "cost per square foot" is the wrong question</h2>
+<p>It is the most-searched number in commercial cleaning and the least useful one, because it is an <strong>output</strong>, not an input. Nobody prices a building by looking up a rate per square foot. They work out how many labor hours the space takes, multiply by what labor costs, add supplies and margin — and cost per square foot is simply that answer divided by the floor area.</p>
+<p>Which means every published benchmark is quietly assuming three things it usually does not tell you:</p>
+<p><strong>Frequency.</strong> Five nights a week costs about five times what one night a week costs, per square foot. A benchmark that does not state visits per week is not a benchmark.</p>
+<p><strong>Production rate.</strong> An open warehouse might clean at 8,000 sq ft an hour. A restaurant with a kitchen and two restrooms might manage 1,800. That is a 4× spread in labor before anything else is considered.</p>
+<p><strong>Labor market.</strong> The same scope in a market where loaded labor is $27 an hour costs 35% more than where it is $20. No national average survives that.</p>
+<p>So use cost per square foot the way it is actually useful: as a <em>sanity check</em> on a number you built from labor. If your price per square foot is far below what your own production and labor rates support, you have not found an efficiency — you have made an arithmetic error, and the account will underperform for as long as you hold it.</p>
+</div></section>
+
+<section class="bd"><div class="wrap faq">
+<h2>Common questions</h2>
+<details><summary>My price is well below the benchmark. Is that bad?</summary><p>Usually, yes — but check the inputs first. If your crews genuinely clean faster than the production rate you selected, the benchmark is wrong for you and your price may be fine. If they do not, the account is running on a thinner margin than you think, or on none at all. The <a href="/dayporter/contract-profitability/">contract profitability check</a> settles it with real hours.</p></details>
+<details><summary>My price is well above it. Should I worry about losing the account?</summary><p>Not automatically. Higher-frequency scopes, day porter coverage, consumables supply and demanding specifications all legitimately raise the number. What matters is being able to explain the difference — a customer who understands what they are buying rarely leaves over price alone.</p></details>
+<details><summary>Should I quote customers a price per square foot?</summary><p>Generally no. It invites a comparison against a number they found online that assumes a different frequency and a different scope. Quote a monthly price against a written scope, and keep cost per square foot as your own internal check.</p></details>
+<details><summary>Does this include periodic work like stripping and waxing?</summary><p>No, and it should not. Floor refinishing, carpet extraction and window cleaning are priced as separate line items. Folding them into a recurring per-square-foot rate makes the account look expensive and the periodic work look free.</p></details>
+</div></section>
+
+<section class="bd"><div class="wrap">
+<h2>More free tools</h2>
+<p class="sub">All free, all in your browser, none of them ask for an email.</p>
+<div class="tools">
+<a class="tool" href="/dayporter/bid-calculator/"><h3>Janitorial bid calculator</h3><p>Square footage in, a defensible monthly price out.</p></a>
+<a class="tool" href="/dayporter/loaded-labor-rate/"><h3>Loaded labor rate</h3><p>What an employee really costs per hour worked.</p></a>
+<a class="tool" href="/dayporter/cost-per-square-foot/" aria-current="page"><h3>Cost per square foot</h3><p>Check your price against what the math implies.</p></a>
+<a class="tool" href="/dayporter/contract-profitability/"><h3>Contract profitability</h3><p>Is an account you already run actually making money?</p></a>
+</div>
+</div></section>
+
+<section class="bd"><div class="wrap">
+<div class="ctabox">
+<div class="kicker">The app</div>
+<h2 style="margin-bottom:10px">Stop rebuilding this in your head.</h2>
+<p style="color:var(--body);max-width:660px">These tools are single screens of
+<strong style="color:var(--ink)">DayPorter</strong>, a CRM built for one trade:
+commercial cleaning. Bids save with the inputs that produced them, against the
+building they belong to, and the contracts you win roll up into monthly recurring
+revenue. It all stays on your phone.</p>
+<a class="btn" href="/dayporter/">See what DayPorter does &rarr;</a>
+</div>
+</div></section>
+
+<footer><div class="wrap">
+<div>&copy; 2026 simonbuilds.app</div>
+<div><a href="/">Home</a> &nbsp;&middot;&nbsp; <a href="/dayporter/">DayPorter</a> &nbsp;&middot;&nbsp; <a href="/#apps">Apps</a> &nbsp;&middot;&nbsp; <a href="mailto:support@simonbuilds.app">Contact</a></div>
+</div></footer>
+
+<script>
+var AVG_WEEKS_PER_MONTH = 52 / 12;
+var BENCH_SUPPLIES_PCT = 6;
+var BENCH_MARGIN_PCT = 30;
+
+var TYPES = [
+  { name:'General office',   rate:3000 },
+  { name:'Retail',           rate:4500 },
+  { name:'School',           rate:3500 },
+  { name:'Medical / clinic', rate:2000 },
+  { name:'Warehouse',        rate:8000 },
+  { name:'Restaurant',       rate:1800 }
+];
+
+/* Monthly price per sq ft implied by the bid math:
+   price = (sqft/rate) * monthlyVisits * labor * (1+supplies) / (1-margin)
+   so price/sqft collapses to the sqft-independent expression below. */
+function impliedPerSqft(visitsPerWeek, laborRate, prodRate) {
+  if (visitsPerWeek <= 0 || laborRate <= 0 || prodRate <= 0) return 0;
+  var monthlyVisits = visitsPerWeek * AVG_WEEKS_PER_MONTH;
+  return monthlyVisits * laborRate * (1 + BENCH_SUPPLIES_PCT/100) /
+         (1 - BENCH_MARGIN_PCT/100) / prodRate;
+}
+
+var $ = function(id){ return document.getElementById(id); };
+var num = function(id){ var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+var m2 = function(n){ return '$' + n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); };
+var m3 = function(n){ return '$' + n.toLocaleString('en-US',{minimumFractionDigits:3,maximumFractionDigits:3}); };
+var last = null;
+
+function render(){
+  var sqft = num('sqft'), price = num('price'), visits = num('visits');
+  var prod = num('prod'), labor = num('labor');
+
+  var monthlyVisits = visits * AVG_WEEKS_PER_MONTH;
+  var perSqftMo = (sqft > 0 && price > 0) ? price / sqft : 0;
+  var bench = impliedPerSqft(visits, labor, prod);
+
+  last = { sqft:sqft, price:price, visits:visits, prod:prod, labor:labor,
+           perSqftMo:perSqftMo, bench:bench, monthlyVisits:monthlyVisits };
+
+  var res = $('result');
+  res.className = 'result';
+
+  if (perSqftMo > 0) {
+    $('psf').innerHTML = m3(perSqftMo) + '<small> / sq ft / month</small>';
+    if (bench > 0) {
+      var diff = (perSqftMo / bench - 1) * 100;
+      if (diff < -15) {
+        res.className = 'result bad';
+        $('verdict').textContent = Math.abs(diff).toFixed(0) + '% below what your labor math supports — check the scope, or the margin is not there.';
+      } else if (diff > 15) {
+        res.className = 'result good';
+        $('verdict').textContent = diff.toFixed(0) + '% above the implied price — healthy, if you can justify the scope.';
+      } else {
+        res.className = 'result good';
+        $('verdict').textContent = 'In line with what your production and labor rates imply (' + (diff >= 0 ? '+' : '') + diff.toFixed(0) + '%).';
+      }
+    } else {
+      $('verdict').textContent = 'Add a labor rate and frequency to compare.';
+    }
+  } else {
+    $('psf').innerHTML = (bench > 0 ? m3(bench) : '$0.000') + '<small> / sq ft / month</small>';
+    $('verdict').textContent = bench > 0
+      ? 'What the labor math implies at this frequency. Enter a price to compare yours.'
+      : 'Enter square footage and a monthly price.';
+  }
+
+  $('r-mo').textContent    = perSqftMo ? m3(perSqftMo) : '—';
+  $('r-yr').textContent    = perSqftMo ? m2(perSqftMo * 12) : '—';
+  $('r-visit').textContent = (price > 0 && monthlyVisits > 0) ? m2(price / monthlyVisits) : '—';
+  $('r-mv').textContent    = monthlyVisits ? monthlyVisits.toLocaleString('en-US',{maximumFractionDigits:1}) : '—';
+  $('r-bench').textContent = bench ? m3(bench) : '—';
+
+  // live benchmark table
+  var rows = '';
+  for (var i = 0; i < TYPES.length; i++) {
+    var v = impliedPerSqft(visits, labor, TYPES[i].rate);
+    var isSel = TYPES[i].rate === prod;
+    rows += '<tr' + (isSel ? ' style="background:color-mix(in srgb,var(--accent) 8%,transparent)"' : '') + '>' +
+            '<td>' + TYPES[i].name + (isSel ? ' &larr;' : '') + '</td>' +
+            '<td class="n">' + TYPES[i].rate.toLocaleString('en-US') + '</td>' +
+            '<td class="n">' + (v ? m3(v) : '—') + '</td>' +
+            '<td class="n">' + (v ? m2(v * 12) : '—') + '</td></tr>';
+  }
+  $('benchbody').innerHTML = rows;
+  $('assume-note').textContent = visits + '× per week and ' + m2(labor) + '/hr loaded labor, with 6% supplies and a 30% margin';
+
+  var btns = $('presets').getElementsByTagName('button');
+  for (var j = 0; j < btns.length; j++) {
+    btns[j].setAttribute('aria-pressed', parseFloat(btns[j].getAttribute('data-rate')) === prod ? 'true' : 'false');
+  }
+}
+
+var ids = ['sqft','price','visits','prod','labor'];
+for (var k = 0; k < ids.length; k++) $(ids[k]).addEventListener('input', render);
+
+$('presets').addEventListener('click', function(e){
+  var r = e.target.getAttribute && e.target.getAttribute('data-rate');
+  if (!r) return;
+  $('prod').value = r;
+  render();
+});
+
+$('copy').addEventListener('click', function(){
+  if (!last) return;
+  var t = [
+    'Cleaning cost per square foot',
+    '',
+    'Area:                 ' + last.sqft.toLocaleString('en-US') + ' sq ft',
+    'Monthly price:        ' + m2(last.price),
+    'Frequency:            ' + last.visits + '× per week (' + last.monthlyVisits.toFixed(1) + ' visits/month)',
+    '',
+    'Per sq ft per month:  ' + m3(last.perSqftMo),
+    'Per sq ft per year:   ' + m2(last.perSqftMo * 12),
+    '',
+    'Implied by labor math: ' + m3(last.bench) + ' /sq ft/month',
+    '(at ' + last.prod.toLocaleString('en-US') + ' sq ft/labor hour, ' + m2(last.labor) + '/hr loaded, 6% supplies, 30% margin)',
+    '',
+    'Calculated at simonbuilds.app/dayporter/cost-per-square-foot/'
+  ].join('\n');
+
+  var done = function(ok){
+    var b = $('copy');
+    b.textContent = ok ? 'Copied' : 'Select and copy manually';
+    setTimeout(function(){ b.textContent = 'Copy the numbers'; }, 2000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t).then(function(){done(true);}, function(){done(false);});
+  } else { done(false); }
+});
+
+render();
+</script>
+</body>
+</html>

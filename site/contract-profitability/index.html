@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cleaning Contract Profitability Calculator | Is This Account Making Money?</title>
+<meta name="description" content="Free profitability check for cleaning contracts. Put in what an account actually bills and the hours it actually takes, and find out its real margin — plus the price or the hours you'd need to hit your target.">
+<link rel="canonical" href="https://simonbuilds.app/dayporter/contract-profitability/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Simon Builds">
+<meta property="og:title" content="Cleaning Contract Profitability Calculator | Is This Account Making Money?">
+<meta property="og:description" content="Real hours against real revenue. Find out what an account actually earns you, and exactly what would have to change to fix it.">
+<meta property="og:url" content="https://simonbuilds.app/dayporter/contract-profitability/">
+<meta property="og:image" content="https://simonbuilds.app/assets/icons/dayporter.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/dayporter/_tools.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Cleaning Contract Profitability Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","url":"https://simonbuilds.app/dayporter/contract-profitability/","description":"Checks whether an existing commercial cleaning contract is profitable by comparing actual monthly revenue against actual labor hours at a loaded rate, plus supplies and overhead, and reports the price or hours needed to reach a target margin.","author":{"@type":"Person","name":"Simon Shih","url":"https://simonbuilds.app/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a good profit margin on a cleaning contract?","acceptedAnswer":{"@type":"Answer","text":"Recurring janitorial work is commonly bid at 25 to 40 percent margin on price, before company overhead. What matters more than the target is measuring the real figure: margin calculated from actual hours worked rather than the hours assumed at bid time is usually lower, sometimes dramatically."}},
+{"@type":"Question","name":"Why does an account bid at 30 percent end up at 10?","acceptedAnswer":{"@type":"Answer","text":"Almost always because the real labor hours exceed the bid hours. The production rate assumed at bid time turns out to be optimistic once restrooms, hard floors and customer requests are accounted for, and every extra hour comes straight out of margin."}},
+{"@type":"Question","name":"Should I raise the price or cut the hours?","acceptedAnswer":{"@type":"Answer","text":"Cutting hours without changing scope means the work does not get done and the account is lost anyway. The honest options are a documented scope reduction agreed with the customer, a price increase justified by the real hours, or accepting the account as a low-margin one for a strategic reason you have decided deliberately."}}]}
+</script>
+</head>
+<body>
+<nav><div class="wrap"><a class="logo" href="/">simon<em>builds</em>.app</a><div class="navlinks"><a href="/dayporter/bid-calculator/">Bid Calculator</a><a href="/dayporter/">DayPorter</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="eyebrow">Free tool</div>
+<h1>Contract profitability check</h1>
+<p class="lead">A bid is a forecast. This is the audit. Put in what an account
+actually bills and the hours it actually takes — not the hours you assumed when you
+priced it — and find out what it really earns you. Free, and nothing leaves your browser.</p>
+</div></header>
+
+<section><div class="wrap">
+<div class="calc-shell">
+
+  <div class="panel">
+    <div class="field"><div class="field-row">
+      <label for="rev">Monthly revenue <span class="unit">($)</span>
+        <span class="hint">What you invoice for the recurring scope. Leave periodic work out.</span>
+      </label>
+      <input type="number" id="rev" value="2625" min="0" step="25" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="hours">Actual labor hours <span class="unit">(per month)</span>
+        <span class="hint">What crews really spend in the building — from timesheets, not from the bid. This is the number that decides everything.</span>
+      </label>
+      <input type="number" id="hours" value="95" min="0" step="1" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="rate">Loaded labor rate <span class="unit">($/hr)</span>
+        <span class="hint">Wage plus burden — work yours out with the <a href="/dayporter/loaded-labor-rate/">loaded labor rate calculator</a>. Using the raw wage here will flatter the result.</span>
+      </label>
+      <input type="number" id="rate" value="20" min="0" step="0.50" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="sup">Supplies <span class="unit">($/month)</span>
+        <span class="hint">Actual spend on this account — chemicals, liners, paper, equipment wear.</span>
+      </label>
+      <input type="number" id="sup" value="104" min="0" step="5" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="other">Other costs <span class="unit">($/month)</span>
+        <span class="hint">Supervision visits, travel and fuel, parking, equipment rental — anything this account specifically causes.</span>
+      </label>
+      <input type="number" id="other" value="0" min="0" step="10" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="target">Target margin <span class="unit">(% of price)</span>
+        <span class="hint">What you intended to make. Capped at 90%.</span>
+      </label>
+      <input type="number" id="target" value="30" min="0" max="90" step="1" inputmode="numeric">
+    </div></div>
+  </div>
+
+  <div class="out">
+    <div class="result" id="result" aria-live="polite">
+      <div class="big" id="margin">0%<small> margin</small></div>
+      <div class="sub2" id="verdict">&mdash;</div>
+    </div>
+
+    <table class="brk"><tbody>
+      <tr><td>Revenue</td><td id="r-rev">&mdash;</td></tr>
+      <tr><td>Labor</td><td id="r-lab">&mdash;</td></tr>
+      <tr><td>Supplies</td><td id="r-sup">&mdash;</td></tr>
+      <tr><td>Other</td><td id="r-oth">&mdash;</td></tr>
+      <tr class="tot"><td>Total cost</td><td id="r-cost">&mdash;</td></tr>
+      <tr><td>Profit per month</td><td id="r-profit">&mdash;</td></tr>
+    </tbody></table>
+
+    <button class="copy" id="copy" type="button">Copy the numbers</button>
+    <p class="cap" id="fixnote">&mdash;</p>
+  </div>
+
+</div>
+</div></section>
+
+<section class="bd"><div class="wrap">
+<h2>What would have to change</h2>
+<p class="sub">Two honest levers, and one number that tells you how far off you are.</p>
+<div class="grid">
+<div class="card"><div class="kicker">Lever one</div><h3 id="fix-price-h">Raise the price</h3><p id="fix-price-p">&mdash;</p></div>
+<div class="card"><div class="kicker">Lever two</div><h3 id="fix-hours-h">Reduce the hours</h3><p id="fix-hours-p">&mdash;</p></div>
+<div class="card"><div class="kicker">Reality</div><h3 id="fix-yield-h">Revenue per labor hour</h3><p id="fix-yield-p">&mdash;</p></div>
+<div class="card"><div class="kicker">Over a year</div><h3 id="fix-year-h">Annual impact</h3><p id="fix-year-p">&mdash;</p></div>
+</div>
+</div></section>
+
+<section class="bd"><div class="wrap prose">
+<h2>The gap between the bid and the job</h2>
+<p>Almost every unprofitable cleaning contract was profitable on paper. The bid assumed a production rate, the production rate implied a number of hours, and the price was built on those hours. Then the building turned out to have more restrooms than the walkthrough suggested, the tile needed detail work every night, the customer started asking for the break room fridge, and the crew quietly started staying forty minutes longer.</p>
+<p>Nobody rebid the account. The invoice stayed the same. And the margin went somewhere.</p>
+<p>This is why the single most valuable number in a cleaning business is <strong>actual hours per account</strong>, and why so few contractors have it. Payroll knows total hours. The bid knows assumed hours. Almost nobody compares the two building by building — which means the accounts bleeding money look exactly like the ones that are not, right up until the year-end numbers do not make sense.</p>
+<p>Run this check on your three biggest accounts using timesheet hours. If the answer surprises you, that is the finding, and it is worth more than any new lead.</p>
+</div></section>
+
+<section class="bd"><div class="wrap faq">
+<h2>Common questions</h2>
+<details><summary>What margin should I be targeting?</summary><p>Recurring janitorial work is commonly bid at 25–40% on price before company overhead — rent, admin, insurance not tied to payroll, your own time. If you are at 12% on the contract itself, there is very little left once overhead is carried.</p></details>
+<details><summary>Should company overhead be in "other costs"?</summary><p>Not per-account. Put only costs this specific account causes in "other" — supervision visits, travel, its own equipment. General overhead comes out of the pooled margin across all accounts, which is why a contract-level margin near zero is worse than it looks.</p></details>
+<details><summary>My margin is negative. Do I fire the client?</summary><p>Not as the first move. Establish why the hours exceed the bid — scope creep, an optimistic production rate, or a staffing problem. Then go to the customer with the real numbers and either an agreed scope reduction or a price increase. Contractors are usually far more afraid of that conversation than customers are.</p></details>
+<details><summary>Why does using the raw wage instead of the loaded rate matter so much?</summary><p>Because the burden is 25–45% of labor, and labor is most of the cost. Check an account at $15 instead of $20.50 loaded and you will see a margin that does not exist. That single substitution is why unprofitable accounts can look healthy for years.</p></details>
+</div></section>
+
+<section class="bd"><div class="wrap">
+<h2>More free tools</h2>
+<p class="sub">All free, all in your browser, none of them ask for an email.</p>
+<div class="tools">
+<a class="tool" href="/dayporter/bid-calculator/"><h3>Janitorial bid calculator</h3><p>Square footage in, a defensible monthly price out.</p></a>
+<a class="tool" href="/dayporter/loaded-labor-rate/"><h3>Loaded labor rate</h3><p>What an employee really costs per hour worked.</p></a>
+<a class="tool" href="/dayporter/cost-per-square-foot/"><h3>Cost per square foot</h3><p>Check your price against what the math implies.</p></a>
+<a class="tool" href="/dayporter/contract-profitability/" aria-current="page"><h3>Contract profitability</h3><p>Is an account you already run actually making money?</p></a>
+</div>
+</div></section>
+
+<section class="bd"><div class="wrap">
+<div class="ctabox">
+<div class="kicker">The app</div>
+<h2 style="margin-bottom:10px">Know this for every account, not just this one.</h2>
+<p style="color:var(--body);max-width:660px">These tools are single screens of
+<strong style="color:var(--ink)">DayPorter</strong>, a CRM built for one trade:
+commercial cleaning. Bids save with the assumptions behind them, contracts sit
+under the buildings they cover, and what you win rolls up into monthly recurring
+revenue — so the gap between the bid and the job stops being invisible.</p>
+<a class="btn" href="/dayporter/">See what DayPorter does &rarr;</a>
+</div>
+</div></section>
+
+<footer><div class="wrap">
+<div>&copy; 2026 simonbuilds.app</div>
+<div><a href="/">Home</a> &nbsp;&middot;&nbsp; <a href="/dayporter/">DayPorter</a> &nbsp;&middot;&nbsp; <a href="/#apps">Apps</a> &nbsp;&middot;&nbsp; <a href="mailto:support@simonbuilds.app">Contact</a></div>
+</div></footer>
+
+<script>
+function analyse(i) {
+  var target = Math.min(90, Math.max(0, i.targetPct));
+  var labor = Math.max(0, i.hours) * Math.max(0, i.rate);
+  var cost = labor + Math.max(0, i.supplies) + Math.max(0, i.other);
+  var profit = i.revenue - cost;
+  var margin = i.revenue > 0 ? (profit / i.revenue) * 100 : 0;
+
+  // price that would hit the target margin, at today's cost
+  var reqPrice = cost / (1 - target / 100);
+  // hours that would hit the target margin, at today's price
+  var reqHours = i.rate > 0
+    ? (i.revenue * (1 - target / 100) - Math.max(0, i.supplies) - Math.max(0, i.other)) / i.rate
+    : 0;
+
+  return {
+    labor:labor, cost:cost, profit:profit, margin:margin, target:target,
+    reqPrice:reqPrice, priceGap:reqPrice - i.revenue,
+    reqHours:reqHours, hoursGap:Math.max(0, i.hours) - reqHours,
+    yield: i.hours > 0 ? i.revenue / i.hours : 0,
+    revenue:i.revenue, hours:Math.max(0, i.hours), rate:i.rate,
+    supplies:Math.max(0, i.supplies), other:Math.max(0, i.other)
+  };
+}
+
+var $ = function(id){ return document.getElementById(id); };
+var num = function(id){ var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+var m0 = function(n){ return (n<0?'-$':'$') + Math.abs(n).toLocaleString('en-US',{maximumFractionDigits:0}); };
+var m2 = function(n){ return (n<0?'-$':'$') + Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); };
+var h1 = function(n){ return n.toLocaleString('en-US',{maximumFractionDigits:1}); };
+var last = null;
+
+function render(){
+  var r = analyse({
+    revenue:num('rev'), hours:num('hours'), rate:num('rate'),
+    supplies:num('sup'), other:num('other'), targetPct:num('target')
+  });
+  last = r;
+
+  var res = $('result');
+  res.className = 'result';
+
+  if (r.revenue <= 0) {
+    $('margin').innerHTML = '0%<small> margin</small>';
+    $('verdict').textContent = 'Enter what this account bills each month.';
+  } else {
+    $('margin').innerHTML = r.margin.toFixed(1) + '%<small> margin</small>';
+    if (r.margin < 0) {
+      res.className = 'result bad';
+      $('verdict').textContent = 'This account loses ' + m2(-r.profit) + ' every month it runs.';
+    } else if (r.margin < r.target) {
+      res.className = 'result warn';
+      $('verdict').textContent = 'Below your ' + r.target + '% target — ' + m2(r.profit) + ' a month, not the ' + m2(r.revenue * r.target/100) + ' you priced for.';
+    } else {
+      res.className = 'result good';
+      $('verdict').textContent = 'At or above your ' + r.target + '% target — ' + m2(r.profit) + ' a month.';
+    }
+  }
+
+  $('r-rev').textContent    = m2(r.revenue);
+  $('r-lab').textContent    = m2(r.labor);
+  $('r-sup').textContent    = m2(r.supplies);
+  $('r-oth').textContent    = m2(r.other);
+  $('r-cost').textContent   = m2(r.cost);
+  $('r-profit').textContent = m2(r.profit);
+
+  $('fixnote').textContent = r.hours > 0
+    ? 'Labor is ' + (r.revenue > 0 ? (r.labor / r.revenue * 100).toFixed(0) : '0') + '% of revenue on this account.'
+    : 'Add actual monthly labor hours to get a real answer.';
+
+  // levers
+  if (r.revenue > 0 && r.priceGap > 0.5) {
+    $('fix-price-p').textContent = 'To hit ' + r.target + '%, this account would need to bill ' + m2(r.reqPrice) +
+      ' a month — an increase of ' + m2(r.priceGap) + ', or ' + (r.priceGap / r.revenue * 100).toFixed(0) + '%.';
+  } else if (r.revenue > 0) {
+    $('fix-price-p').textContent = 'No increase needed. At ' + m2(r.revenue) + ' a month this account is already at or above your ' + r.target + '% target.';
+  } else { $('fix-price-p').textContent = '—'; }
+
+  if (r.rate > 0 && r.hoursGap > 0.1) {
+    $('fix-hours-p').textContent = 'At today’s price, the target needs ' + h1(r.reqHours) + ' hours a month instead of ' +
+      h1(r.hours) + ' — ' + h1(r.hoursGap) + ' fewer. That is a scope change to agree with the customer, not corners to cut.';
+  } else if (r.rate > 0) {
+    $('fix-hours-p').textContent = 'The hours support the price. At ' + h1(r.hours) + ' hours a month this account is inside your target.';
+  } else { $('fix-hours-p').textContent = '—'; }
+
+  $('fix-yield-p').textContent = r.yield > 0
+    ? 'Each labor hour brings in ' + m2(r.yield) + ' against a loaded cost of ' + m2(r.rate) +
+      '. Everything above that pays for supplies, overhead and profit.'
+    : '—';
+
+  var annual = r.profit * 12;
+  var annualTarget = r.revenue * (r.target/100) * 12;
+  $('fix-year-p').textContent = r.revenue > 0
+    ? 'Over a year this account contributes ' + m0(annual) + '. At your target it would contribute ' + m0(annualTarget) +
+      ' — a difference of ' + m0(annualTarget - annual) + '.'
+    : '—';
+}
+
+var ids = ['rev','hours','rate','sup','other','target'];
+for (var k = 0; k < ids.length; k++) $(ids[k]).addEventListener('input', render);
+
+$('copy').addEventListener('click', function(){
+  if (!last || last.revenue <= 0) return;
+  var r = last;
+  var t = [
+    'Contract profitability check',
+    '',
+    'Monthly revenue:      ' + m2(r.revenue),
+    'Labor (' + h1(r.hours) + ' hrs @ ' + m2(r.rate) + '): ' + m2(r.labor),
+    'Supplies:             ' + m2(r.supplies),
+    'Other:                ' + m2(r.other),
+    'Total cost:           ' + m2(r.cost),
+    '',
+    'PROFIT:               ' + m2(r.profit) + ' / month',
+    'MARGIN:               ' + r.margin.toFixed(1) + '%  (target ' + r.target + '%)',
+    '',
+    'To hit target: bill ' + m2(r.reqPrice) + ' (' + (r.priceGap > 0 ? '+' + m2(r.priceGap) : 'no increase needed') + ')',
+    '            or run ' + h1(r.reqHours) + ' hrs/month instead of ' + h1(r.hours),
+    '',
+    'Checked at simonbuilds.app/dayporter/contract-profitability/'
+  ].join('\n');
+
+  var done = function(ok){
+    var b = $('copy');
+    b.textContent = ok ? 'Copied' : 'Select and copy manually';
+    setTimeout(function(){ b.textContent = 'Copy the numbers'; }, 2000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t).then(function(){done(true);}, function(){done(false);});
+  } else { done(false); }
+});
+
+render();
+</script>
+</body>
+</html>

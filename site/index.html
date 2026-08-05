@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DayPorter | The CRM Built for Commercial Cleaning Companies</title>
+<meta name="description" content="A CRM for one trade. DayPorter follows how janitorial companies actually sell — walk the building, send the bid, win the recurring contract — with a real bid calculator and contracts that roll up into monthly recurring revenue. Local-first, no account.">
+<link rel="canonical" href="https://simonbuilds.app/dayporter/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Simon Builds">
+<meta property="og:title" content="DayPorter | The CRM Built for Commercial Cleaning Companies">
+<meta property="og:description" content="Walk the building, send the bid, win the recurring contract. A janitorial CRM with a real bid calculator and MRR rollup — all stored privately on your device.">
+<meta property="og:url" content="https://simonbuilds.app/dayporter/">
+<meta property="og:image" content="https://simonbuilds.app/assets/icons/dayporter.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DayPorter","operatingSystem":"iOS","applicationCategory":"BusinessApplication","url":"https://simonbuilds.app/dayporter/","description":"A CRM built for commercial cleaning and janitorial companies: a pipeline that fits the trade (lead, walkthrough, bid sent, active, lost), clients and their buildings, a janitorial bid calculator built on production rates and loaded labor cost, follow-up reminders, and recurring contracts rolled into monthly recurring revenue. Local-first with no account.","image":"https://simonbuilds.app/assets/icons/dayporter.png","author":{"@type":"Person","name":"Simon Shih","url":"https://simonbuilds.app/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f6f7f8;--card:#ffffff;--border:#e4e7ea;--hairline:#edeff1;
+  --ink:#16191d;--body:#3f454c;--muted:#7d858e;
+  --accent:#20486f;--accent-tx:#ffffff;
+  --lead:#378add;--walk:#ba7517;--bid:#7b5ea7;--active:#1d9e75;--lost:#c93b3b;
+  --amber:#ba7517;
+  --r:16px;
+  --fs:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --fm:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#101317;--card:#1a1f25;--border:#2b323b;--hairline:#232a32;
+    --ink:#eef1f4;--body:#c3cad2;--muted:#8b949e;
+    --accent:#7fa9d9;--accent-tx:#0d1218;
+    --amber:#d69b3f;
+  }
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--fs);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--ink)}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;font-size:1.05rem;color:var(--ink);letter-spacing:-.01em}
+.logo em{color:var(--accent);font-style:normal}
+.navlinks{display:flex;gap:24px;font-size:.9rem}
+.navlinks a{color:var(--muted)}
+.navlinks a:hover{color:var(--ink)}
+header.hero{padding:64px 0 52px;border-bottom:1px solid var(--border)}
+.hero-row{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}
+.icon{width:112px;height:112px;border-radius:26px;border:1px solid var(--border);flex-shrink:0}
+.eyebrow{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:750;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px}
+.lead{color:var(--body);font-size:1.08rem;max-width:640px;margin-bottom:24px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.chip{font-size:.78rem;color:var(--body);background:var(--card);border:1px solid var(--border);border-radius:99px;padding:5px 14px}
+.chip.rev{color:var(--amber);border-color:color-mix(in srgb,var(--amber) 40%,var(--border))}
+.btn{display:inline-block;font-weight:650;font-size:.95rem;background:var(--accent);color:var(--accent-tx);border-radius:12px;padding:13px 26px;transition:opacity .15s}
+.btn:hover{opacity:.86;color:var(--accent-tx)}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--body);margin-left:10px}
+.btn.ghost:hover{color:var(--ink);border-color:var(--muted)}
+section{padding:52px 0;border-bottom:1px solid var(--border)}
+h2{font-size:1.5rem;font-weight:750;letter-spacing:-.01em;margin-bottom:8px}
+.sub{color:var(--body);margin-bottom:26px;max-width:680px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px}
+.card h3{font-size:1rem;font-weight:650;margin-bottom:8px}
+.card p{color:var(--body);font-size:.92rem}
+.kicker{font-size:.67rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+@media(max-width:800px){.two{grid-template-columns:1fr}}
+
+.pipe{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:8px 20px}
+.stage{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--hairline)}
+.stage:last-child{border-bottom:none}
+.what{display:flex;align-items:center;gap:9px}
+.pip{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.lbl{font-size:.94rem;font-weight:600}
+.note{font-size:.83rem;color:var(--muted)}
+
+.mrr{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.mrr .hd{padding:13px 18px;border-bottom:1px solid var(--hairline);font-size:.8rem;color:var(--muted)}
+.mrr .hd b{color:var(--ink);font-weight:650}
+.mrr .ln{display:flex;justify-content:space-between;padding:11px 18px;border-bottom:1px solid var(--hairline);font-size:.9rem;color:var(--body)}
+.mrr .ln b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.mrr .tot{display:flex;justify-content:space-between;padding:15px 18px;background:var(--accent);color:var(--accent-tx)}
+.mrr .tot span{font-weight:650}
+.mrr .tot b{font-size:1.15rem;font-weight:750;font-variant-numeric:tabular-nums}
+.cap{font-size:.8rem;color:var(--muted);margin-top:13px}
+
+.toolbox{background:var(--card);border:1px solid var(--accent);border-radius:var(--r);padding:28px}
+.prose p{color:var(--body);max-width:700px;margin-bottom:16px}
+.prose strong{color:var(--ink)}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 22px;margin-bottom:12px}
+.faq summary{font-weight:650;cursor:pointer;color:var(--ink)}
+.faq p{color:var(--body);font-size:.94rem;margin-top:10px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.tool{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;display:block}
+.tool:hover{border-color:var(--accent)}
+.tool h3{color:var(--ink);margin-bottom:6px}
+.tool p{color:var(--body);font-size:.88rem}
+.apps-row{display:flex;gap:12px;flex-wrap:wrap}
+.applink{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 18px;font-size:.9rem;color:var(--body)}
+.applink:hover{color:var(--ink);border-color:var(--muted)}
+footer{padding:36px 0 52px;color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer a{color:var(--body)}
+@media(max-width:600px){.hero-row{gap:20px}.btn.ghost{margin-left:0;margin-top:10px}.stage{grid-template-columns:96px 1fr}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="logo" href="/">simon<em>builds</em>.app</a><div class="navlinks"><a href="/dayporter/bid-calculator/">Bid Calculator</a><a href="/#apps">All Apps</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="hero-row">
+<img class="icon" src="/assets/icons/dayporter.png" alt="DayPorter app icon" width="120" height="120">
+<div>
+<div class="eyebrow">DayPorter for iPhone &amp; iPad</div>
+<h1>The CRM built for one trade.</h1>
+<p class="lead">Commercial cleaning does not sell like software. You walk the
+building, you price it off square footage and production rates, and you win a
+contract that pays every month for years. DayPorter is built around that, and
+nothing else.</p>
+<div class="chips"><span class="chip">iPhone &amp; iPad</span><span class="chip">Business</span><span class="chip">Light &amp; dark</span><span class="chip">No account</span><span class="chip rev">In App Store review</span></div>
+<a class="btn" href="/dayporter/bid-calculator/">Try the free bid calculator</a><a class="btn ghost" href="/#apps">See all apps</a>
+</div>
+</div>
+</div></header>
+
+<section><div class="wrap">
+<h2>The pipeline the trade actually sells on</h2>
+<p class="sub">Generic CRMs give you "qualified / proposal / negotiation." That is
+not how a cleaning contract is won. DayPorter uses the five stages this industry
+really moves through, and every client sits in exactly one of them.</p>
+<div class="two">
+<div class="pipe">
+  <div class="stage"><span class="what"><span class="pip" style="background:var(--lead)"></span><span class="lbl">Lead</span></span><span class="note">someone who might need a cleaner</span></div>
+  <div class="stage"><span class="what"><span class="pip" style="background:var(--walk)"></span><span class="lbl">Walkthrough</span></span><span class="note">you have been in the building</span></div>
+  <div class="stage"><span class="what"><span class="pip" style="background:var(--bid)"></span><span class="lbl">Bid sent</span></span><span class="note">the number is with them</span></div>
+  <div class="stage"><span class="what"><span class="pip" style="background:var(--active)"></span><span class="lbl">Active</span></span><span class="note">signed, cleaning, billing monthly</span></div>
+  <div class="stage"><span class="what"><span class="pip" style="background:var(--lost)"></span><span class="lbl">Lost</span></span><span class="note">and why — so you bid better next time</span></div>
+</div>
+<div>
+<div class="mrr">
+  <div class="hd"><b>Monthly recurring revenue</b> — from active contracts</div>
+  <div class="ln"><span>Northgate Medical Plaza</span><b>$3,180</b></div>
+  <div class="ln"><span>Fairmont Office Park — Bldg C</span><b>$2,625</b></div>
+  <div class="ln"><span>Ridgeline Distribution</span><b>$1,940</b></div>
+  <div class="ln"><span>Cedar Street Retail</span><b>$865</b></div>
+  <div class="tot"><span>Total MRR</span><b>$8,610</b></div>
+</div>
+<p class="cap">Every contract you win rolls up automatically. Sample figures — but
+this is the number a cleaning company owner actually wants on one screen, and
+almost never has.</p>
+</div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<div class="toolbox">
+<div class="kicker">Free, no signup</div>
+<h2 style="margin-bottom:10px">The bid calculator, on the web</h2>
+<p style="color:var(--body);max-width:680px;margin-bottom:8px">The same bid math
+that is built into the app, free in your browser. Cleanable square footage and
+visits per week go in; hours, labor, supplies, margin and a defensible monthly
+price come out — with every step of the breakdown shown, so you can defend the
+number when the customer asks how you got there.</p>
+<p style="color:var(--body);max-width:680px;margin-bottom:18px">It also explains
+the one thing that costs small contractors the most money: <strong>margin is a
+share of price, not a markup on cost.</strong></p>
+<a class="btn" href="/dayporter/bid-calculator/">Open the bid calculator &rarr;</a>
+</div>
+
+<h2 style="margin-top:44px">The rest of the toolkit</h2>
+<p class="sub">Four free calculators for the numbers this trade runs on. No signup, no email, nothing stored.</p>
+<div class="tools">
+<a class="tool" href="/dayporter/bid-calculator/"><h3>Janitorial bid calculator</h3><p>Square footage in, a defensible monthly price out.</p></a>
+<a class="tool" href="/dayporter/loaded-labor-rate/"><h3>Loaded labor rate</h3><p>What an employee really costs per hour worked.</p></a>
+<a class="tool" href="/dayporter/cost-per-square-foot/"><h3>Cost per square foot</h3><p>Check your price against what the math implies.</p></a>
+<a class="tool" href="/dayporter/contract-profitability/"><h3>Contract profitability</h3><p>Is an account you already run actually making money?</p></a>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>What's inside</h2>
+<div class="grid">
+<div class="card"><div class="kicker">Bidding</div><h3>A real janitorial bid calculator</h3><p>Square footage and visits in, a defensible monthly price out — built on production rates, loaded labor cost, supplies and margin. Every bid saves with its inputs, so you can reopen it and adjust rather than starting over.</p></div>
+<div class="card"><div class="kicker">Structure</div><h3>Clients, buildings, contracts</h3><p>One client can have five buildings, each on its own scope and schedule. DayPorter keeps sites under clients and contracts under sites, which is how the work is really organised.</p></div>
+<div class="card"><div class="kicker">The number</div><h3>Monthly recurring revenue</h3><p>Active contracts roll up into one MRR figure, with per-visit rates annualised across 52 weeks so months are actually comparable.</p></div>
+<div class="card"><div class="kicker">Follow-ups</div><h3>No bid goes cold</h3><p>Set a reminder when the bid goes out. Most lost janitorial work is not lost on price — it is lost because nobody followed up in week two.</p></div>
+<div class="card"><div class="kicker">Field-ready</div><h3>Works on the iPad too</h3><p>Universal, because walkthroughs happen on a tablet as often as a phone. Same app, laid out to read properly on the bigger screen.</p></div>
+<div class="card"><div class="kicker">Private</div><h3>Stays on your device</h3><p>No account, no servers, no tracking. Your client list, your bids and your margins never leave the device — and you can export a backup you control.</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap prose">
+<h2>Why a CRM for just this</h2>
+<p>Most commercial cleaning companies run their book of business out of a phone's notes app, a whiteboard, and one spreadsheet nobody else can open. The generic CRMs that would replace it are built for software sales teams: they want deal values and close probabilities and quarterly quotas, and they have no idea what a production rate is.</p>
+<p>The janitorial business has a shape of its own. Revenue is <strong>recurring</strong>, so the number that matters is monthly, not per-deal. Pricing comes from <strong>square footage and labor hours</strong>, not from what the customer will bear. A client is really a set of <strong>buildings</strong>, each with its own scope. And the whole thing turns on a <strong>walkthrough</strong> — a stage that exists in no other industry's pipeline.</p>
+<p>DayPorter is that shape, and only that shape. It will never ask you what quarter you expect to close in.</p>
+<p>Everything is local. There is no account to create and no server holding your customer list or your margins — a competitor cannot subpoena, breach, or buy what was never uploaded. Export a versioned backup whenever you want.</p>
+<p>DayPorter is free for your first 10 clients; one purchase unlocks unlimited clients forever. Sites, contracts, bids, follow-ups and export stay free either way — there is no subscription.</p>
+<p>DayPorter is designed and built by Simon Shih, who also makes <a href="/billowe/">Billowe</a>, <a href="/dundue/">Dundue</a>, <a href="/hitchwell/">HitchWell</a> and <a href="/tally/">Tally</a>.</p>
+</div></section>
+
+<section><div class="wrap faq">
+<h2>Common questions</h2>
+<details><summary>Is DayPorter available yet?</summary><p>It is in App Store review now. The bid calculator on this site is free and works today, and the app will be listed here the moment it is approved.</p></details>
+<details><summary>What does it cost?</summary><p>Free for your first 10 clients. A single one-time purchase unlocks unlimited clients — no subscription, ever. Sites, contracts, bids, follow-up reminders and export are free no matter what.</p></details>
+<details><summary>How does the bid calculator work?</summary><p>Cleanable square footage divided by your production rate gives labor hours per visit; visits per month annualise across 52 weeks; hours times your loaded labor rate gives labor cost; supplies ride on top as a percentage; and margin is taken as a share of price. You can <a href="/dayporter/bid-calculator/">try the whole thing free right here</a>.</p></details>
+<details><summary>Can I track more than one building for a client?</summary><p>Yes — that is the point. Clients hold sites, sites hold contracts. A property manager with six buildings on three different schedules is one client, not six.</p></details>
+<details><summary>Does it work on iPad?</summary><p>Yes. It is a universal app, because walkthroughs and bid reviews often happen on a tablet in the field.</p></details>
+<details><summary>Where is my data kept?</summary><p>On your device. No account, no cloud, no tracking. Keep device backups switched on so your history survives a lost phone, and export a JSON backup any time you want a copy you control.</p></details>
+</div></section>
+
+<section><div class="wrap">
+<h2>More from Simon Builds</h2>
+<div class="apps-row"><a class="applink" href="/billowe/">Billowe</a><a class="applink" href="/dundue/">Dundue</a><a class="applink" href="/tally/">Tally</a><a class="applink" href="/hitchwell/">HitchWell</a><a class="applink" href="/ugcio/">UGCio</a><a class="applink" href="/painthetown/">Paint the Town</a><a class="applink" href="/deckiq/">DeckIQ</a><a class="applink" href="/mise/">Mise</a><a class="applink" href="/sceneready/">SceneReady</a></div>
+</div></section>
+
+<footer><div class="wrap">
+<div>&copy; 2026 simonbuilds.app</div>
+<div><a href="/">Home</a> &nbsp;&middot;&nbsp; <a href="/dayporter/bid-calculator/">Bid Calculator</a> &nbsp;&middot;&nbsp; <a href="https://texas0418.github.io/DayPorter/support.html">Support</a> &nbsp;&middot;&nbsp; <a href="https://texas0418.github.io/DayPorter/privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="mailto:support@simonbuilds.app">Contact</a></div>
+</div></footer>
+</body>
+</html>

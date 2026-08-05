@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loaded Labor Rate Calculator | What an Employee Really Costs Per Hour</title>
+<meta name="description" content="Free loaded labor rate calculator for cleaning contractors. Turn an hourly wage into the true cost of putting someone in the building — payroll taxes, workers' comp, liability, benefits and paid time off. No signup.">
+<link rel="canonical" href="https://simonbuilds.app/dayporter/loaded-labor-rate/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Simon Builds">
+<meta property="og:title" content="Loaded Labor Rate Calculator | What an Employee Really Costs Per Hour">
+<meta property="og:description" content="A $15 wage is never $15. Work out the true hourly cost of an employee — burden, insurance and unproductive paid hours included.">
+<meta property="og:url" content="https://simonbuilds.app/dayporter/loaded-labor-rate/">
+<meta property="og:image" content="https://simonbuilds.app/assets/icons/dayporter.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/dayporter/_tools.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Loaded Labor Rate Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","url":"https://simonbuilds.app/dayporter/loaded-labor-rate/","description":"Converts an hourly wage into a fully loaded labor rate by adding employer payroll taxes, workers' compensation, general liability, benefits and the cost of paid but unproductive hours.","author":{"@type":"Person","name":"Simon Shih","url":"https://simonbuilds.app/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a loaded labor rate?","acceptedAnswer":{"@type":"Answer","text":"The full hourly cost of putting an employee to work: their wage plus employer payroll taxes, workers' compensation, general liability insurance, any benefits, and the cost of paid hours they are not on site, such as holidays and paid time off. It is commonly 25 to 45 percent above the raw wage."}},
+{"@type":"Question","name":"Why is workers' compensation so expensive for cleaning companies?","acceptedAnswer":{"@type":"Answer","text":"Janitorial work carries a higher risk classification than office work — slips, falls, chemical exposure and repetitive strain. Rates vary widely by state and by a company's own claims history, so the only reliable number is the one on your own policy declaration page."}},
+{"@type":"Question","name":"Should I bid using the wage or the loaded rate?","acceptedAnswer":{"@type":"Answer","text":"Always the loaded rate. Bidding off the raw wage systematically underprices every contract, because the burden costs are real and are paid whether or not they were priced in. On a $15 wage the gap is typically $4 to $6 an hour, which on a nightly account is thousands of dollars a year."}}]}
+</script>
+</head>
+<body>
+<nav><div class="wrap"><a class="logo" href="/">simon<em>builds</em>.app</a><div class="navlinks"><a href="/dayporter/bid-calculator/">Bid Calculator</a><a href="/dayporter/">DayPorter</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="eyebrow">Free tool</div>
+<h1>Loaded labor rate calculator</h1>
+<p class="lead">A $15 wage is never $15. Add employer taxes, workers' comp,
+liability and the hours you pay for but nobody is on site, and you get the number
+you should actually be bidding from. Free, and nothing you type leaves your browser.</p>
+</div></header>
+
+<section><div class="wrap">
+<div class="calc-shell">
+
+  <div class="panel">
+    <div class="field"><div class="field-row">
+      <label for="wage">Base hourly wage <span class="unit">($/hr)</span>
+        <span class="hint">What lands on the employee's paycheck, before anything else.</span>
+      </label>
+      <input type="number" id="wage" value="15" min="0" step="0.25" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="tax">Employer payroll taxes <span class="unit">(%)</span>
+        <span class="hint">Social Security and Medicare are 7.65%, plus federal and state unemployment. Around 9–10% total for most employers.</span>
+      </label>
+      <input type="number" id="tax" value="9.5" min="0" step="0.1" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="wc">Workers' compensation <span class="unit">(% of payroll)</span>
+        <span class="hint">Janitorial classes run high and vary a lot by state and claims history. Use the rate on your own policy — this default is only a placeholder.</span>
+      </label>
+      <input type="number" id="wc" value="6" min="0" step="0.1" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="gl">General liability <span class="unit">(% of payroll)</span>
+        <span class="hint">Your GL premium spread across payroll hours.</span>
+      </label>
+      <input type="number" id="gl" value="1.5" min="0" step="0.1" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="ben">Benefits &amp; other <span class="unit">($/hr)</span>
+        <span class="hint">Health contribution, uniforms, phone allowance, training — as a flat hourly figure.</span>
+      </label>
+      <input type="number" id="ben" value="0" min="0" step="0.25" inputmode="decimal">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="pto">Paid time off <span class="unit">(days/yr)</span>
+        <span class="hint">Vacation and sick days you pay for.</span>
+      </label>
+      <input type="number" id="pto" value="5" min="0" max="60" step="1" inputmode="numeric">
+    </div></div>
+
+    <div class="field"><div class="field-row">
+      <label for="hol">Paid holidays <span class="unit">(days/yr)</span>
+        <span class="hint">Paid, but nobody is in the building.</span>
+      </label>
+      <input type="number" id="hol" value="6" min="0" max="30" step="1" inputmode="numeric">
+    </div></div>
+  </div>
+
+  <div class="out">
+    <div class="result" aria-live="polite">
+      <div class="big" id="loaded">$0<small> / hr</small></div>
+      <div class="sub2" id="uplift">&mdash;</div>
+    </div>
+
+    <table class="brk"><tbody>
+      <tr><td>Base wage</td><td id="r-wage">&mdash;</td></tr>
+      <tr><td>Payroll taxes</td><td id="r-tax">&mdash;</td></tr>
+      <tr><td>Workers' comp</td><td id="r-wc">&mdash;</td></tr>
+      <tr><td>General liability</td><td id="r-gl">&mdash;</td></tr>
+      <tr><td>Benefits &amp; other</td><td id="r-ben">&mdash;</td></tr>
+      <tr class="tot"><td>Cost per paid hour</td><td id="r-paid">&mdash;</td></tr>
+      <tr><td>Loaded rate per <em>worked</em> hour</td><td id="r-loaded">&mdash;</td></tr>
+    </tbody></table>
+
+    <button class="copy" id="copy" type="button">Copy the numbers</button>
+    <p class="cap">The last two lines differ because holidays and PTO are paid
+    hours with nobody on site. Your cost has to be recovered over the hours that
+    are actually worked.</p>
+  </div>
+
+</div>
+</div></section>
+
+<section class="bd"><div class="wrap prose">
+<h2>Why the wage is never the cost</h2>
+<p>Ask a cleaning contractor what labor costs them and most will say the wage. It is the number they negotiated, the number on the offer letter, and the number they carry in their head when a customer asks for a price.</p>
+<p>It is also wrong by 25–45%, every time.</p>
+<p>The moment someone is on payroll you owe <strong>employer-side payroll taxes</strong> — 7.65% for Social Security and Medicare, plus federal and state unemployment. You owe <strong>workers' compensation</strong>, and janitorial classification codes are not cheap, because this trade involves wet floors, chemicals and ladders. You carry <strong>general liability</strong>. If you offer benefits, uniforms or a phone allowance, those are real dollars per hour too.</p>
+<p>Then there is the part almost nobody prices: <strong>paid hours nobody works</strong>. Six holidays and five PTO days is 88 paid hours a year with no one in the building. You still owe that money, and the only place it can come from is the hours that <em>are</em> worked — so your true rate per worked hour is higher again.</p>
+<p>None of this is optional or unusual. It is simply what employing people costs, and the contractors who quote off the raw wage are not cheaper than their competitors — they are just absorbing the difference out of their own margin, usually without realising it.</p>
+</div></section>
+
+<section class="bd"><div class="wrap">
+<h2>What to do with the number</h2>
+<p class="sub">The loaded rate is an input, not an answer. It goes straight into the bid.</p>
+<div class="grid">
+<div class="card"><div class="kicker">Next step</div><h3>Put it in the bid calculator</h3><p>The <a href="/dayporter/bid-calculator/">janitorial bid calculator</a> asks for a loaded labor rate. This is that number. Using the raw wage there will produce a price that looks competitive and quietly loses money.</p></div>
+<div class="card"><div class="kicker">Check</div><h3>Audit the accounts you already have</h3><p>Run your existing contracts through the <a href="/dayporter/contract-profitability/">contract profitability check</a> with the loaded rate instead of the wage. Accounts that looked fine often turn out not to be.</p></div>
+<div class="card"><div class="kicker">Accuracy</div><h3>Use your own insurance numbers</h3><p>The workers' comp and liability defaults here are placeholders. Your declaration pages have the real rates, and in this trade they are the difference between a healthy margin and a thin one.</p></div>
+<div class="card"><div class="kicker">Watch it</div><h3>Re-run it every renewal</h3><p>Comp rates move with your claims history and state rules; wages move with the market. A loaded rate calculated two years ago is not the rate you are paying now.</p></div>
+</div>
+</div></section>
+
+<section class="bd"><div class="wrap faq">
+<h2>Common questions</h2>
+<details><summary>Is 2,080 hours the right base?</summary><p>It is the standard full-time year — 40 hours across 52 weeks. This calculator uses it to work out what share of paid hours are actually productive. Part-time staff have the same <em>rate</em>; only the annual totals change.</p></details>
+<details><summary>What if I use subcontractors instead of employees?</summary><p>Then payroll taxes and workers' comp are the subcontractor's problem, and their invoice rate is closer to your true cost. Verify they genuinely carry their own comp and liability, and understand that misclassifying employees as contractors is an expensive mistake in this industry.</p></details>
+<details><summary>Should overtime be in here?</summary><p>Not in the base rate. Price the standard scope at the loaded rate, then handle overtime as its own cost when a job requires it. Burying expected overtime in the base rate hides which accounts are actually causing it.</p></details>
+<details><summary>Does this replace advice from an accountant?</summary><p>No. It is a straightforward arithmetic model to get you a defensible working number. Your accountant and your insurance broker have the exact figures for your business.</p></details>
+</div></section>
+
+<section class="bd"><div class="wrap">
+<h2>More free tools</h2>
+<p class="sub">All free, all in your browser, none of them ask for an email.</p>
+<div class="tools">
+<a class="tool" href="/dayporter/bid-calculator/"><h3>Janitorial bid calculator</h3><p>Square footage in, a defensible monthly price out.</p></a>
+<a class="tool" href="/dayporter/loaded-labor-rate/" aria-current="page"><h3>Loaded labor rate</h3><p>What an employee really costs per hour worked.</p></a>
+<a class="tool" href="/dayporter/cost-per-square-foot/"><h3>Cost per square foot</h3><p>Check your price against what the math implies.</p></a>
+<a class="tool" href="/dayporter/contract-profitability/"><h3>Contract profitability</h3><p>Is an account you already run actually making money?</p></a>
+</div>
+</div></section>
+
+<section class="bd"><div class="wrap">
+<div class="ctabox">
+<div class="kicker">The app</div>
+<h2 style="margin-bottom:10px">Bid it, win it, keep it.</h2>
+<p style="color:var(--body);max-width:660px">These tools are single screens of
+<strong style="color:var(--ink)">DayPorter</strong>, a CRM built for one trade:
+commercial cleaning. Your loaded rate saves once and applies to every bid, bids
+save against the building they belong to, and won contracts roll up into monthly
+recurring revenue. It all stays on your phone.</p>
+<a class="btn" href="/dayporter/">See what DayPorter does &rarr;</a>
+</div>
+</div></section>
+
+<footer><div class="wrap">
+<div>&copy; 2026 simonbuilds.app</div>
+<div><a href="/">Home</a> &nbsp;&middot;&nbsp; <a href="/dayporter/">DayPorter</a> &nbsp;&middot;&nbsp; <a href="/#apps">Apps</a> &nbsp;&middot;&nbsp; <a href="mailto:support@simonbuilds.app">Contact</a></div>
+</div></footer>
+
+<script>
+var ANNUAL_HOURS = 2080;
+var HOURS_PER_DAY = 8;
+
+function computeLoaded(i) {
+  var zero = { wage:0, taxC:0, wcC:0, glC:0, ben:0, perPaid:0, loaded:0, uplift:0, productive:0 };
+  if (i.wage <= 0) return zero;
+
+  var taxC = i.wage * Math.max(0, i.taxPct) / 100;
+  var wcC  = i.wage * Math.max(0, i.wcPct) / 100;
+  var glC  = i.wage * Math.max(0, i.glPct) / 100;
+  var ben  = Math.max(0, i.benPerHr);
+
+  var perPaid = i.wage + taxC + wcC + glC + ben;
+
+  var unproductive = (Math.max(0, i.ptoDays) + Math.max(0, i.holDays)) * HOURS_PER_DAY;
+  var productive = ANNUAL_HOURS - unproductive;
+  if (productive <= 0) productive = 1; // guard: all-paid-no-work is not a real roster
+
+  var loaded = perPaid * (ANNUAL_HOURS / productive);
+
+  return { wage:i.wage, taxC:taxC, wcC:wcC, glC:glC, ben:ben,
+           perPaid:perPaid, loaded:loaded,
+           uplift:(loaded / i.wage - 1) * 100, productive:productive };
+}
+
+var $ = function(id){ return document.getElementById(id); };
+var num = function(id){ var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+var m2 = function(n){ return '$' + n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); };
+var last = null;
+
+function render(){
+  var r = computeLoaded({
+    wage: num('wage'), taxPct: num('tax'), wcPct: num('wc'), glPct: num('gl'),
+    benPerHr: num('ben'), ptoDays: num('pto'), holDays: num('hol')
+  });
+  last = r;
+
+  $('loaded').innerHTML = m2(r.loaded) + '<small> / hr</small>';
+  $('uplift').textContent = r.loaded > 0
+    ? '+' + r.uplift.toFixed(1) + '% over the wage · ' + r.productive.toLocaleString('en-US') + ' productive hours a year'
+    : 'Enter an hourly wage.';
+
+  $('r-wage').textContent   = r.wage    ? m2(r.wage) : '—';
+  $('r-tax').textContent    = r.wage    ? m2(r.taxC) : '—';
+  $('r-wc').textContent     = r.wage    ? m2(r.wcC)  : '—';
+  $('r-gl').textContent     = r.wage    ? m2(r.glC)  : '—';
+  $('r-ben').textContent    = r.wage    ? m2(r.ben)  : '—';
+  $('r-paid').textContent   = r.perPaid ? m2(r.perPaid) : '—';
+  $('r-loaded').textContent = r.loaded  ? m2(r.loaded)  : '—';
+}
+
+var ids = ['wage','tax','wc','gl','ben','pto','hol'];
+for (var k = 0; k < ids.length; k++) $(ids[k]).addEventListener('input', render);
+
+$('copy').addEventListener('click', function(){
+  if (!last || !last.loaded) return;
+  var t = [
+    'Loaded labor rate',
+    '',
+    'Base wage:            ' + m2(last.wage),
+    'Payroll taxes:        ' + m2(last.taxC),
+    "Workers' comp:        " + m2(last.wcC),
+    'General liability:    ' + m2(last.glC),
+    'Benefits & other:     ' + m2(last.ben),
+    'Cost per paid hour:   ' + m2(last.perPaid),
+    '',
+    'LOADED RATE:          ' + m2(last.loaded) + ' per hour worked',
+    '(+' + last.uplift.toFixed(1) + '% over wage, over ' + last.productive.toLocaleString('en-US') + ' productive hours/yr)',
+    '',
+    'Calculated at simonbuilds.app/dayporter/loaded-labor-rate/'
+  ].join('\n');
+
+  var done = function(ok){
+    var b = $('copy');
+    b.textContent = ok ? 'Copied' : 'Select and copy manually';
+    setTimeout(function(){ b.textContent = 'Copy the numbers'; }, 2000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t).then(function(){done(true);}, function(){done(false);});
+  } else { done(false); }
+});
+
+render();
+</script>
+</body>
+</html>
