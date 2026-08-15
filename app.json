@@ -37,7 +37,8 @@
             "backgroundColor": "#20486f"
           }
         }
-      ]
+      ],
+      "./plugins/withReleaseSigning.js"
     ]
   }
 }

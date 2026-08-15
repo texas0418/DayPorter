@@ -1,0 +1,54 @@
+DAYPORTER — GOOGLE PLAY STORE LISTING (draft 2026-08-15)
+==========================================================
+
+APP NAME (30 chars max)
+DayPorter: Cleaning CRM
+
+SHORT DESCRIPTION (80 chars max)
+The CRM for commercial cleaning: walkthrough, bid calculator, contracts, MRR.
+
+FULL DESCRIPTION (4000 chars max)
+-----------------------------------------------------
+Built for one industry: commercial cleaning and janitorial companies. Not a generic CRM with your logo on it — a pipeline shaped the way this business actually sells.
+
+LEAD → WALKTHROUGH → BID SENT → ACTIVE
+Track every prospect through the stages that matter: the first call, the building walkthrough, the bid on their desk, the signed contract. Mark the ones you lost and why. See your whole book of business at a glance.
+
+A REAL JANITORIAL BID CALCULATOR
+Square footage × production rate → hours → labor + supplies + margin. Build a defensible bid on your phone in the parking lot after the walkthrough, before your competitor gets home to their spreadsheet.
+
+CLIENTS, BUILDINGS, CONTRACTS
+• Every client with their sites — because one account can be six buildings
+• Recurring contracts roll up into monthly recurring revenue you can see
+• Follow-up reminders so bids never die of silence
+• Notes from every walkthrough where you'll actually find them
+
+YOUR BOOK STAYS YOURS
+Everything lives on your phone. No account, no cloud, no monthly SaaS bill on your P&L. Export your data any time — export is free forever.
+
+FREE TO RUN YOUR PIPELINE
+Up to 10 clients free — sites, contracts, bids, follow-ups, and export included, forever. One single lifetime purchase unlocks unlimited clients. No subscription. You clean buildings; we don't clean out your wallet monthly.
+
+If you run crews, walk buildings, and send bids, DayPorter was built for your Tuesday.
+-----------------------------------------------------
+
+CATEGORY: Business
+WEBSITE/SUPPORT: https://texas0418.github.io/DayPorter/
+PRIVACY POLICY URL (verified live 2026-08-15): https://texas0418.github.io/DayPorter/privacy.html
+
+GRAPHIC ASSETS (store/)
+- play-icon-512.png — DONE (First Light)
+- play-feature-graphic.png (1024x500) — DONE
+- screenshots-android/ — captured this run from release APK (pipeline, bid calculator, client w/ sites)
+
+DATA SAFETY FORM (prep)
+- Local-first, no network calls; nothing collected or shared
+- Purchase history via Google Play Billing/RevenueCat for dayporter_pro_lifetime — collected, not shared, app functionality
+
+CONTENT RATING: Everyone
+
+IN-APP PURCHASE
+- dayporter_pro_lifetime (one-time $29.99, mirror iOS) — unlimited clients after 10 free. Play Console product + RevenueCat Google config at submission. Fail-open.
+
+RELEASE NOTES (first release)
+DayPorter arrives on Android: the janitorial-industry CRM. Pipeline, walkthroughs, a real bid calculator, contracts rolled into MRR — all on your phone, all yours.

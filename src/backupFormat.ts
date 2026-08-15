@@ -48,6 +48,7 @@ const str = (v: unknown, d: string): string => (typeof v === 'string' ? v : d);
 const bool = (v: unknown, d: boolean): boolean => (typeof v === 'boolean' ? v : d);
 
 /** Returns a validated backup or throws Error with a human-readable reason. */
+// eslint-disable-next-line complexity -- tech-debt #1
 export function parseBackup(json: string): BackupV1 {
   let raw: unknown;
   try {
