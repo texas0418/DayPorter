@@ -37,7 +37,12 @@
             "backgroundColor": "#20486f"
           }
         }
-      ]
+      ],
+      "./plugins/withReleaseSigning.js",
+      "expo-asset",
+      "expo-font",
+      "expo-sharing",
+      "expo-sqlite"
     ]
   }
 }

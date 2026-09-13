@@ -69,6 +69,7 @@ const shortDate = (ms: number): string => {
   return `${d.getMonth() + 1}/${d.getDate()}`;
 };
 
+// eslint-disable-next-line max-lines-per-function -- tech-debt #1
 export default function ClientScreen({ clientId, onBack, onNewBid }: Props) {
   const { colors: c, stage, statusBarStyle } = useTheme();
   const styles = useMemo(() => makeStyles(c), [c]);
@@ -107,6 +108,7 @@ export default function ClientScreen({ clientId, onBack, onNewBid }: Props) {
 
   useEffect(() => {
     const cl = getClient(clientId);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- tech-debt #1
     setClient(cl);
     if (cl) {
       setContactName(cl.contactName);
