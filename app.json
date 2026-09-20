@@ -22,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#20486f"
-      }
+      },
+      "versionCode": 2
     },
     "plugins": [
       [
