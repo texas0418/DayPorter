@@ -16,6 +16,7 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import { addBid, getClient, listSites } from '../db';
 import { computeBid, formatCents, parseMoneyToCents } from '../models';
+import { recordBidCompleted } from '../review';
 import { useSettings } from '../SettingsContext';
 import { Palette, useTheme } from '../theme';
 
@@ -77,6 +78,8 @@ export default function BidScreen({ clientId, onBack }: Props) {
       priceCents: bid.priceCents,
       createdMs: Date.now(),
     });
+    // Earned-value moment: a real bid was just saved with its monthly price.
+    recordBidCompleted();
     onBack();
   };
 
